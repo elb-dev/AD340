@@ -15,6 +15,7 @@ import com.example.ad340.api.DailyForecast
 import com.example.ad340.api.WeeklyForecast
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.item_daily_forecast.*
 
 /**
  * A simple [Fragment] subclass.
@@ -68,7 +69,9 @@ class WeeklyForecastFragment : Fragment() {
     private fun showForecastDetails(forecast: DailyForecast){
         val temp = forecast.temp.max
         val description = forecast.weather[0].description
-        val action = WeeklyForecastFragmentDirections.actionWeeklyForecastFragmentToForecastDetailsFragment(temp, description)
+        val date = forecast.date
+        val icon = forecast.weather[0].icon
+        val action = WeeklyForecastFragmentDirections.actionWeeklyForecastFragmentToForecastDetailsFragment(temp, description, date, icon)
         findNavController().navigate(action)
     }
 
